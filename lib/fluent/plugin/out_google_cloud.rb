@@ -1528,6 +1528,20 @@ module Fluent
         end
       end
 
+      if record.key?('custom-resource')
+        if record['custom-resource'].key?('name')
+          resource.type = record['custom-resource']['name']
+        end
+        if record['custom-resource'].key?('labels')
+          resource.labels.merge!(
+            delete_and_extract_labels(
+              record['custom-resource']['labels'], record['custom-resource']['labels']
+                .map { | key, _ | [key, key] }.to_h))  
+        end
+
+        record.delete('custom-resource')
+      end
+
       # If the name of a field in the record is present in the @label_map
       # configured by users, report its value as a label and do not send that
       # field as part of the payload.
