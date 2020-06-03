@@ -1,4 +1,4 @@
-FROM eu.gcr.io/stackdriver-agents/stackdriver-logging-agent:1.6.35
+FROM gcr.io/stackdriver-agents/stackdriver-logging-agent:1.6.35
 
 ADD lib/fluent/plugin/out_google_cloud.rb /out_google_cloud.rb
 
