@@ -7,5 +7,6 @@ RUN mv /out_google_cloud.rb /opt/google-fluentd/embedded/lib/ruby/gems/*/gems/fl
 ADD netsyslog.conf /etc/google-fluentd/config.d/netsyslog.conf
 
 ADD entrypoint2.sh /entrypoint2.sh
+RUN chmod +x /entrypoint2.sh
 
 ENTRYPOINT ["/entrypoint2.sh"]
